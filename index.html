@@ -13,11 +13,9 @@
     <div id="app" style="display:none">
         <a class="homebar" @click="tohome"><h1>悪口メモ</h1></a>
         <div v-show="scrflag.home">
-            <p v-if="scrflag.desc">嫌いな人の悪口書けください<br>
-                情報はローカルに保存されるのでハッキングされなれれば大丈夫<br>
-                AESで暗号化しているのでPC見られても安心(パスワードがばれなければ) <br>
-                保存はユーザーの保存とかちょくちょく保存します。<br>
-                念のためで下の保存ボタンを押してください。</p>
+            <p v-if="scrflag.desc">嫌いな人の悪口を書こう！<br>
+                情報はローカルに保存されるので違法にならない！<br>
+                その他は <a href="https://github.com/TNTSuperMan/insultMemo/blob/main/readme.md">こちら</a></p>
             <button v-if="scrflag.desc" @click="scrflag.desc=false">隠す</button><br>
             <button @click="expdat">エクスポート</button>
             <table border="1">
