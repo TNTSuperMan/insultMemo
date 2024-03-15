@@ -1,4 +1,4 @@
-import {save} from "/script/save.js";
+import {save} from "../save.js";
 let app;
 export function initVue(savedata){
     document.querySelector("#app").style.display="block"

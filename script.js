@@ -1,4 +1,4 @@
-import {init} from "/script/init/main.js";
+import {init} from "./script/init/main.js";
 (()=>{
     init()
 })()

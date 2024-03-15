@@ -1,5 +1,5 @@
-import {initVue} from "/script/init/vue.js";
-import {setpwd, save} from "/script/save.js";
+import {initVue} from "../init/vue.js";
+import {setpwd, save} from "../save.js";
 
 export function init(){
     let imdata = localStorage.getItem("imlogin");
