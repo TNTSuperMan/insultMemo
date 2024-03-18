@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>悪口メモ</title>
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
     <script type="module" src="script.js"></script>
@@ -13,10 +14,20 @@
     <div id="app" style="display:none">
         <a class="homebar" @click="tohome"><h1>悪口メモ</h1></a>
         <div v-show="scrflag.home">
-            <p v-if="scrflag.desc">嫌いな人の悪口を書こう！<br>
-                情報はローカルに保存されるので違法にならない！<br>
-                その他は <a href="https://github.com/TNTSuperMan/insultMemo/blob/main/readme.md">こちら</a></p>
-            <button v-if="scrflag.desc" @click="scrflag.desc=false">隠す</button><br>
+            <div class="tweet">
+                <select v-model="tweet.whofor">
+                    <option v-for="ite in save">
+                        {{ite.name}}
+                    </option>
+                </select>に対して
+                <select v-model="tweet.isInsult">
+                    <option value="true">悪口</option>
+                    <option value="false">設定</option>
+                </select>
+                を書く<br>
+                <textarea cols="30" rows="10" v-model="tweet.content"></textarea><br>
+                <button @click="twt">書く</button><span>{{tweet.msg}}</span>
+            </div>
             <button @click="expdat">エクスポート</button>
             <table border="1">
                 <thead>
@@ -89,9 +100,9 @@
         <a style="display:none" download="memo.txt" :href="expblob" id="dl"></a>
     </div>
     <div class="down">
+        <a href="https://github.com/TNTSuperMan/insultMemo/blob/main/readme.md" target="_blank">説明</a><br>
         <button onclick="localStorage.setItem('imlogin',prompt('エクスポートした内容を入力してください'))">インポート</button><br>
         <button onclick="if(confirm('本当に？'))localStorage.removeItem('imlogin')">ブラウザからデータを削除</button><br>
     </div>
-    
 </body>
 </html>

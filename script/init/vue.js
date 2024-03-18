@@ -22,12 +22,11 @@ export function initVue(savedata){
             nowi:null,
             nusrd:{name:0,nick:0,insult:[],setting:[]},
             expblob:null,
-            
-            editvar:{
-                name:0,
-                nick:0,
-                insult:[],
-                setting:[]
+            tweet:{
+                whofor:null,
+                isInsult:"true",
+                content:null,
+                msg:null
             }
         },methods:{
             showusr:i=>{
@@ -90,17 +89,37 @@ export function initVue(savedata){
                 app.scrflag.usr = true;
                 app.scrflag.edit = false
                 app.nusrd = app.save[app.nowi];
-                app.nowi=i;
+                app.nowi=e;
                 svo();
             },
             expdat:e=>{
                 svo();
+                //if(app.expblob) URL.revokeObjectURL(app.expblob);
                 let c = localStorage.getItem("imlogin");
                 let blob = new Blob([c],{"type" : "text/plain"});
                 app.expblob = URL.createObjectURL(blob);
                 document.getElementById("dl").click();
             },
-            svovue:e=>svo()
+            svovue:e=>svo(),
+            twt:e=>{
+                app.tweet.msg = "";
+                if(app.tweet.whofor == null){
+                    app.tweet.msg = "宛先を入力してください。";
+                    setTimeout(e=>app.tweet.msg="",2000);
+                    return;
+                }
+                app.save.forEach(h=>{
+                    if(h.name == app.tweet.whofor){
+                        (app.tweet.isInsult == "true" ? h.insult : h.setting).push(app.tweet.content)
+                        svo();
+                        app.tweet.msg = "成功しました。";
+                        app.tweet.whofor = null;
+                        app.tweet.isInsult = "true";
+                        app.tweet.content = "";
+                        setTimeout(e=>app.tweet.msg="",2000);
+                    }
+                })
+            }
         }
     });
 }

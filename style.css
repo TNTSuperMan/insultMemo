@@ -7,6 +7,7 @@
 .homebar:hover{
     color:gray;
 }
+/*Grid*/
 .gm{
     width:100%;
     position:relative;
@@ -26,8 +27,26 @@
     height:50%;
     width:10%;
 }
+/*Bottom bar*/
 .down{
     position:fixed;
     left:0;
     bottom:0;
+}
+/*Tweet*/
+.tweet{
+    padding:15px;
+    margin:25px;
+    background:#EEE;
+    display:inline-block;
+    border:5px #DDD dashed;
+    overflow:hidden;
+    resize:both;
+}
+.tweet>select{
+    height:27px;
+}
+.tweet>textarea{
+    width:100%;
+    resize:vertical;
 }
