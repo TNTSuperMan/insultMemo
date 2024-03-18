@@ -19,8 +19,8 @@ function first(a){
     return [];
 }
 function decData(imd){
-    //let pass = prompt("パスワードを入力してください");
-    let pass = "a";
+    let pass = prompt("パスワードを入力してください");
+    //let pass = "a";
     setpwd(pass);
     try{
         let enc = CryptoJS.AES.decrypt(imd,pass).toString(CryptoJS.enc.Utf8);
