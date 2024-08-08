@@ -1,109 +1,13 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
+<html lang="en">
+  <head>
     <meta charset="UTF-8">
-    <meta name="description" content="嫌いな人の悪口を書きまくれ！">
+    <link rel="icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>悪口メモ</title>
-    <!--<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>-->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
-    <script type="module" src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div id="app" style="display:none">
-        <a class="homebar" @click="tohome"><h1>悪口メモ</h1></a>
-        <div v-show="scrflag.home">
-            <div class="tweet">
-                <select v-model="tweet.whofor">
-                    <option v-for="ite in save">
-                        {{ite.name}}
-                    </option>
-                </select>に対して
-                <select v-model="tweet.isInsult">
-                    <option value="true">悪口</option>
-                    <option value="false">設定</option>
-                </select>
-                を書く<br>
-                <textarea cols="30" rows="10" v-model="tweet.content"></textarea><br>
-                <button @click="twt">書く</button><span>{{tweet.msg}}</span>
-            </div>
-            <button @click="expdat">エクスポート</button>
-            <table border="1">
-                <thead>
-                    <tr><th>別名</th><th>名前</th><th>見る</th></tr>
-                </thead>
-                <tbody>
-                    <tr v-for="(usr, i) in save">
-                        <th>{{usr.nick}}</th>
-                        <th>{{usr.name}}</th>
-                        <th><a href="#" @click="showusr(i)">見る</a></th>
-                    </tr>
-                </tbody>
-            </table>
-            <input type="text" placeholder="別名" v-model="inp.nick">
-            <input type="text" placeholder="名前" v-model="inp.name">
-            <button @click="addusr">追加</button><br><br>
-            <button @click="svovue">保存</button>
-        </div>
-        <div v-show="scrflag.usr">
-            <h1>{{nusrd.name}}</h1>
-            <p>{{nusrd.nick}}</p>
-            <button @click="showedit">編集</button>
-            <div class="gm">
-                <div class="gl">
-                    <h2>悪口</h2>
-                    <ul>
-                        <li v-for="v in nusrd.insult">
-                            {{v}}
-                        </li>
-                    </ul>
-                </div>
-                <div class="gr">
-                    <h2>設定</h2>
-                    <ul>
-                        <li v-for="v in nusrd.setting">
-                            {{v}}
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="gms"></div>
-        </div>
-        <div v-show="scrflag.edit">
-            <button @click="savenus">保存</button>
-            <button @click="delusr">消す</button><br>
-            <p>名前:<input type="text" v-model="nusrd.name"></p>
-            <p>別名:<input type="text" v-model="nusrd.nick"></p>
-            <div class="gm">
-                <div class="gl">
-                    <h2>悪口</h2>
-                    <ul>
-                        <li v-for="(v,i) in nusrd.insult">
-                            <button @click="Edelinsult(i)">X</button>{{v}}
-                        </li>
-                        <input type="text" v-model="inp.insult"><button @click="Eaddinsult">追加</button>
-                    </ul>
-                </div>
-                <div class="gr">
-                    <h2>設定</h2>
-                    <ul>
-                        <li v-for="(v,i) in nusrd.setting">
-                            <button @click="Edelsetting(i)">X</button>{{v}}
-                        </li>
-                        <input type="text" v-model="inp.setting"><button @click="Eaddsetting">追加</button>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="gms"></div>
-        <a style="display:none" download="memo.txt" :href="expblob" id="dl"></a>
-    </div>
-    <div class="down">
-        <a href="https://github.com/TNTSuperMan/insultMemo/blob/main/readme.md" target="_blank">説明</a><br>
-        <button onclick="localStorage.setItem('imlogin',prompt('エクスポートした内容を入力してください'))">インポート</button><br>
-        <button onclick="if(confirm('本当に？'))localStorage.removeItem('imlogin')">ブラウザからデータを削除</button><br>
-    </div>
-</body>
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>

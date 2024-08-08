@@ -1,15 +1,33 @@
-# 悪口メモ
-嫌いな人の悪口を書くためだけのサイトです。  
-## 保存
-まず、これはネットではなくブラウザ(正確にはwindow.localStorage)に  
-保存される形式です。なので名誉棄損・侮辱にならない。(素晴らしい)  
-それに、たとえ他人にPCを触られても暗号化(正確にはAES256暗号)されてるので  
-安心です。パスワードが簡単・バレたり普通に画面見られたら終わりです。　
-プログラムがちょくちょく保存しますが手動で保存もおすすめします。  
-エクスポートして暗号化された情報が保存できます。一応  
-その情報消せる(パスワードわからなくなった時用)ので、  
-定期的なエクスポートをお勧めします。
-## しくみ
-Vue2に渡してあーだこーだ  
-情報は、Vueが扱うオブジェクト→JSON.parse→AES暗号→localStorageと、  
-## ストレス発散に使ってね♡
+# insultMemo
+
+This template should help get you started developing with Vue 3 in Vite.
+
+## Recommended IDE Setup
+
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+
+## Type Support for `.vue` Imports in TS
+
+TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+
+## Customize configuration
+
+See [Vite Configuration Reference](https://vitejs.dev/config/).
+
+## Project Setup
+
+```sh
+npm install
+```
+
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
+```
+
+### Type-Check, Compile and Minify for Production
+
+```sh
+npm run build
+```
