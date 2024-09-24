@@ -1,11 +1,19 @@
 <script setup>
 import { provide, ref } from "vue"
-import Check from "./Check.vue"
+import { AES } from "crypto-js"
+import Check from "./Auth.vue"
 import Subsc from "./Subscribe.vue"
 import Home from "./Home.vue"
 const path = ref("")
-provide("data", ref([]))
-provide("pass", ref(""))
+const data = ref([])
+const pass = ref("")
+provide("save", ()=>{
+    let json = JSON.stringify(data.value)
+    let enc = AES.encrypt(json, pass.value)
+    window.localStorage.setItem("im", enc)
+})
+provide("data", data)
+provide("pass", pass)
 provide("path",path)
 if(window.localStorage.getItem("im")){
     path.value = "check"
